@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "last_updated": "YYYY-MM-DD",
+  "_note": "Copier vers user_profile.json (exclu du git) et remplir avec les vraies valeurs",
+  "identity": {
+    "age": 0,
+    "situation": "étudiant",
+    "revenus_reguliers": false
+  },
+  "revenus": {
+    "sources": []
+  },
+  "patrimoine": {
+    "livret_jeune": { "montant": 0, "statut": "actif", "taux_min": 0.015, "taux_max": 0.035, "fiscalite": "exonéré IR et PS" },
+    "epargne_revolut": { "montant": 0, "role": "liquidité de précaution", "note": "minimum absolu" },
+    "crypto": { "valeur_estimee": 0, "statut": "position longue terme" },
+    "pea": {
+      "statut": "à ouvrir",
+      "courtier": "",
+      "apport_initial_cible": 0,
+      "versement_mensuel_cible": 0,
+      "tarif_cle": "",
+      "dca_automatique": false,
+      "parrainage": { "actif": false, "bonus": 0, "condition": "" }
+    }
+  },
+  "objectifs": {
+    "horizon": "long terme (5+ ans)",
+    "objectif_principal": "",
+    "tolerance_risque": "modérée",
+    "contrainte_liquidite": "conserver X€ minimum"
+  },
+  "regles_personnelles": {
+    "liquidite_minimale": 0,
+    "part_crypto_max": 0.20,
+    "ordres_pea_max_par_mois": 1,
+    "montant_max_ordre_gratuit": 0
+  },
+  "etfs_recommandes_2026": [],
+  "historique_decisions": []
+}
