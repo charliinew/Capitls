@@ -17,13 +17,20 @@ S'utilise dans Claude Code via le skill `/capitls` ou directement avec les tools
 
 ## Setup
 
-### 1. Installer les dépendances
+### 1. Cloner et initialiser
 
 ```bash
+git clone <repo>
+cd Capitls
 make setup
 ```
 
-Crée le virtualenv, installe les dépendances, et génère un `.env` depuis `.env.example`.
+`make setup` :
+- installe les dépendances Python via `uv`
+- génère `.env` depuis `.env.example`
+- génère `credentials.json` depuis `credentials.json.tpl`
+- génère `.claude/settings.json` avec le bon chemin absolu pour ce clone
+- copie `user_profile.example.json` → `user_profile.json` si absent
 
 ### 2. Configurer les credentials
 
@@ -37,6 +44,12 @@ FINARY_TOTP_SECRET=ABCDEF...   # secret TOTP base32 depuis ton app d'authentific
 
 Pour récupérer `FINARY_TOTP_SECRET` : dans Apple Passwords / Authy, affiche les détails de l'entrée Finary — le secret base32 est visible dans les paramètres avancés.
 
+Remplir `credentials.json` (utilisé par `finary_uapi`) :
+
+```json
+{ "email": "ton@email.com", "password": "ton_mot_de_passe_finary" }
+```
+
 ### 3. Se connecter à Finary
 
 ```bash
@@ -45,9 +58,11 @@ make finary-signin
 
 Génère le code TOTP automatiquement et sauvegarde la session (cookies + JWT). À refaire si la session expire (généralement après quelques semaines).
 
-### 4. Activer le serveur MCP
+### 4. Activer le serveur MCP dans Claude Code
 
-Le fichier `~/.claude/.mcp.json` est configuré pour un accès global depuis n'importe quel projet Claude Code. **Redémarrer Claude Code** suffit.
+`make setup` génère `.claude/settings.json` avec le chemin correct pour ce clone. **Redémarrer Claude Code** suffit — le serveur MCP est détecté automatiquement au niveau projet.
+
+> Note : `.claude/settings.json` est gitignored (chemin absolu machine-specific). Le template versionné est `.claude/settings.json.example`.
 
 Pour Claude Desktop, ajouter dans `~/Library/Application Support/Claude/claude_desktop_config.json` :
 
