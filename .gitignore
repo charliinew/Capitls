@@ -10,6 +10,9 @@ localCookiesMozilla.txt
 # Données personnelles financières — NEVER commit
 mcp_server/context/user_profile.json
 
+# Claude Code — settings machine-specific (généré par make setup)
+.claude/settings.json
+
 # Python
 __pycache__/
 *.py[cod]
@@ -25,8 +28,6 @@ build/
 .coverage
 htmlcov/
 
-# uv
-uv.lock
 
 # IDE
 .vscode/
