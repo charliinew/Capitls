@@ -47,15 +47,41 @@ EOF
     fi
 fi
 
+# 5. Générer .claude/settings.json depuis le template
+mkdir -p .claude
+if [ ! -f .claude/settings.json ]; then
+    if [ -f .claude/settings.json.example ]; then
+        sed "s|{{PROJECT_DIR}}|$(pwd)|g" .claude/settings.json.example > .claude/settings.json
+        echo "✓ .claude/settings.json généré (cwd: $(pwd))"
+    else
+        echo "⚠️  .claude/settings.json.example introuvable — settings MCP non générés"
+    fi
+else
+    echo "✓ .claude/settings.json déjà présent"
+fi
+
+# 6. Copier user_profile.json depuis l'exemple si absent
+if [ ! -f mcp_server/context/user_profile.json ]; then
+    if [ -f mcp_server/context/user_profile.example.json ]; then
+        cp mcp_server/context/user_profile.example.json mcp_server/context/user_profile.json
+        echo "✓ user_profile.json créé depuis l'exemple — à remplir avec tes données"
+    else
+        echo "⚠️  user_profile.example.json introuvable — créer mcp_server/context/user_profile.json manuellement"
+    fi
+else
+    echo "✓ user_profile.json déjà présent"
+fi
+
 echo ""
 echo "✅ Setup terminé !"
 echo ""
 echo "Prochaines étapes :"
 echo "  1. Remplir .env avec tes credentials Finary"
 echo "  2. Remplir credentials.json avec email/password"
-echo "  3. make finary-signin MFA=<code_2fa>  ← connexion initiale (2FA requis)"
-echo "  4. make test                           ← vérifier que les skills fonctionnent"
-echo "  5. make run                            ← lancer le serveur MCP"
+echo "  3. Remplir mcp_server/context/user_profile.json avec ton profil"
+echo "  4. make finary-signin MFA=<code_2fa>  ← connexion initiale (2FA requis)"
+echo "  5. make test                           ← vérifier que les skills fonctionnent"
+echo "  6. make run                            ← lancer le serveur MCP"
 echo ""
 echo "Claude Code détecte automatiquement le serveur via .claude/settings.json"
 echo "Redémarre Claude Code pour activer le MCP server."

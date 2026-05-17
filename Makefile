@@ -15,6 +15,19 @@ setup:
 	@echo "→ Création du .env..."
 	@test -f .env || cp .env.example .env && echo "  .env créé — remplir FINARY_EMAIL et FINARY_PASSWORD"
 	@test -f credentials.json || cp credentials.json.tpl credentials.json 2>/dev/null || echo "  credentials.json.tpl non trouvé, créer credentials.json manuellement"
+	@echo "→ Génération de .claude/settings.json..."
+	@mkdir -p .claude
+	@if [ ! -f .claude/settings.json ]; then \
+		sed "s|{{PROJECT_DIR}}|$$(pwd)|g" .claude/settings.json.example > .claude/settings.json && \
+		echo "  .claude/settings.json généré (cwd: $$(pwd))"; \
+	else \
+		echo "  .claude/settings.json déjà présent"; \
+	fi
+	@echo "→ Profil utilisateur..."
+	@if [ ! -f mcp_server/context/user_profile.json ] && [ -f mcp_server/context/user_profile.example.json ]; then \
+		cp mcp_server/context/user_profile.example.json mcp_server/context/user_profile.json && \
+		echo "  user_profile.json créé depuis l'exemple"; \
+	fi
 	@echo "✓ Setup terminé. Lancer: make finary-signin MFA=<code>"
 
 run:
