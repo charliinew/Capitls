@@ -5,37 +5,13 @@ Développement strictement personnel — aucune contrainte réglementaire AMF.
 
 ---
 
-## Profil utilisateur (contexte persistant)
+## Profil utilisateur
 
-```
-Étudiant EPITECH, 20 ans, Paris
-Revenus irréguliers:
-  - Stage Scaleway ~900€/mois (jusqu'en août 2026)
-  - Freelance (variable, ponctuel)
-```
+Le profil de l'utilisateur (patrimoine, comptes ouverts, courtier, montants, revenus, stratégie personnelle) est stocké exclusivement dans :
+- `mcp_server/context/user_profile.json` (données live, **dans `.gitignore`**)
+- La mémoire privée Claude (`~/.claude/projects/.../memory/`)
 
-### Patrimoine actuel
-
-| Compte | Montant | Rôle |
-|--------|---------|------|
-| Livret Jeune | 1 600€ (plafonné) | Épargne réglementée, 1.5-3.5% exonéré |
-| Épargne Revolut | 600€ (minimum à ne jamais toucher) | Liquidité de précaution |
-| Crypto | ~750€ | Position longue terme |
-| PEA Fortuneo | À ouvrir (1 000€ apport initial prévu) | Investissement long terme |
-
-### Courtier PEA : Fortuneo (décision prise)
-
-- **Tarif clé** : 1 ordre/mois < 500€ = **GRATUIT** → contrainte forte sur la fréquence
-- **Parrainage actif** : 160€ offerts si 1 000€ investis initialement (à ne pas rater)
-- **PAS de DCA automatique** → l'agent doit calculer et rappeler les ordres manuels
-- Pas Trade Republic, pas Boursorama
-
-### Stratégie PEA
-
-- Apport initial : 1 000€ (étalé sur 6 mois ≈ 167€/mois supplémentaires)
-- Versement mensuel cible : 200€/mois ensuite
-- ETF cible : MSCI World éligible PEA (voir section ETFs)
-- 1 ordre/mois maximum (contrainte Fortuneo gratuit)
+**Ne jamais committer de données personnelles dans ce repo public.**
 
 ---
 
@@ -67,6 +43,76 @@ L'agent **recommande activement** DCAM ou WPEA pour tout nouvel investissement.
 - Plafond : 1 600€ (déjà atteint)
 - Exonéré d'IR et de prélèvements sociaux
 - Fermeture automatique au 31 décembre de l'année des 25 ans
+
+---
+
+## Univers d'investissement exhaustif — Checklist systématique
+
+> **Règle agent** : lors de toute recommandation, parcourir cette liste exhaustive et justifier explicitement pourquoi chaque produit est retenu ou écarté selon le profil chargé depuis `user_profile.json`. Ne jamais omettre un produit éligible sans explication.
+
+### Épargne réglementée (livrets)
+
+| Produit | Taux 2026 | Plafond | Fiscalité | Conditions d'éligibilité |
+|---------|-----------|---------|-----------|--------------------------|
+| **LEP** | **2.5%** (depuis 01/02/2026) | 10 000€ | Exonéré IR+PS | RFR < 22 419€ (vérifier avis d'imposition) |
+| **Livret Jeune** | min 1.5% (= Livret A) — SG : 2.00%, CA : 2.40%, CIC/CM : 3.5% | 1 600€ | Exonéré IR+PS | 12–25 ans |
+| **Livret A** | 1.5% (depuis 01/02/2026) | 22 950€ | Exonéré IR+PS | Aucune |
+| **LDDS** | 1.5% (depuis 01/02/2026) | 12 000€ | Exonéré IR+PS | Majeur, résident FR |
+| **CEL** | ~0.5% | 15 300€ | Fiscalisé (PFU) | — |
+| **PEL** | 1.75% brut (~1.2% net post-2024) | 61 200€ | PFU 30% dès €1 | Bloqué 4 ans min |
+
+### Investissement boursier
+
+| Produit | Fiscalité | Plafond | Conditions |
+|---------|-----------|---------|------------|
+| **PEA** | 0% IR + 18.6% PS après 5 ans | 150 000€ | Résident FR, 1 par personne |
+| **PEA-PME** | Idem PEA | 225 000€ cumulé PEA+PEA-PME | Résident FR |
+| **CTO** | PFU 30% | Illimité | Aucune |
+
+### Épargne longue durée
+
+| Produit | Rendement | Fiscalité | Liquidité |
+|---------|-----------|-----------|-----------|
+| **Assurance-vie fonds euros** | ~2.5–3.0% brut | PFU 30% avant 8 ans / 7.5%+PS après 8 ans | Semi (quelques jours) |
+| **Assurance-vie UC (ETF)** | Variable (marché) | Idem AV | Semi |
+| **PER individuel** | Variable | Déduction IR à l'entrée / fiscalisé à la sortie | Bloqué jusqu'à retraite |
+
+### Immobilier indirect
+
+| Produit | Rendement moyen | Fiscalité | Liquidité |
+|---------|----------------|-----------|-----------|
+| **SCPI** | 4–6% brut | Revenus fonciers (TMI+PS) | Faible (marché secondaire) |
+| **Crowdfunding immo** | 8–12% brut | PFU 30% | Bloqué 12–24 mois |
+| **SIIC / foncières cotées** | Variable | PFU 30% (ou PEA si éligible) | Immédiate (bourse) |
+
+### Crypto-actifs
+
+| Produit | Fiscalité | Liquidité |
+|---------|-----------|-----------|
+| **BTC, ETH, SOL...** | 30% PFU sur cessions | Immédiate |
+| **Staking / yield** | Revenus imposables à réception | Variable |
+| **ETF crypto (ETP)** | PFU 30% via CTO | Immédiate |
+
+### Obligations / produits de taux
+
+| Produit | Rendement | Fiscalité |
+|---------|-----------|-----------|
+| **ETF obligataire (CTO/PEA)** | ~3–5% selon duration | PFU 30% (CTO) |
+| **OAT (obligations d'État FR)** | ~3% | PFU 30% |
+| **ETF monétaire (ex: EMARB)** | ~3.5% (ESTER) | PFU 30% (CTO) ou dans PEA |
+
+### Ordre de priorisation générique (profil étudiant, revenus modestes, horizon long terme)
+
+```
+1. LEP             → si éligible (RFR < seuil) — meilleur taux liquide exonéré
+2. PEA             → DCA ETF MSCI World, horizon 5+ ans
+3. Livret Jeune    → si < 25 ans, conserver jusqu'au plafond
+4. LDDS            → compléter quand LEP saturé
+5. Assurance-vie   → ouvrir tôt pour faire courir le délai fiscal de 8 ans
+6. SCPI / Immo     → à partir d'une épargne significative disponible
+7. CTO             → après saturation PEA
+8. PER             → pertinent quand TMI élevée (revenus stables, > 30 ans)
+```
 
 ---
 
@@ -175,7 +221,7 @@ Le serveur MCP est enregistré dans `.claude/settings.json` (projet) :
     "capitls": {
       "command": "uv",
       "args": ["run", "python", "-m", "mcp_server.main"],
-      "cwd": "/Users/charlesignoux/Documents/PERSO/Capitls"
+      "cwd": "/path/to/Capitls"
     }
   }
 }
@@ -206,14 +252,14 @@ make lint       # Ruff + mypy
 4. **Pydantic** pour valider le format interne normalisé
 5. **V1 d'abord** — ne pas anticiper multi-agents avant que le mono-agent soit stable
 6. **finary_uapi est non officielle** — tout appel isolé dans `finary_adapter.py`
-7. **Fortuneo : 1 ordre/mois** — l'agent ne doit jamais recommander plus d'un ordre mensuel
+7. **Contrainte courtier** — respecter la fréquence d'ordres définie dans `user_profile.json` (ex: 1 ordre/mois gratuit selon courtier)
 
 ## Format de réponse attendu de l'agent
 
 ```
-[SOURCE] Tier_1 (AMF) / Tier_2 (Yahoo Finance) / Tier_3 (analyse)
+[SOURCE] Tier_1 (AMF) / Tier_2 (Yahoo Finance/Finary) / Tier_3 (analyse)
 [FAIT] Données objectives
-[RECOMMANDATION] Contextualisée au profil et contraintes Fortuneo
+[RECOMMANDATION] Contextualisée au profil chargé depuis user_profile.json
 [CONFIANCE] FACTUEL / ANALYSE / OPINION
 ```
 
@@ -226,7 +272,7 @@ make lint       # Ruff + mypy
 - [x] Structure fichiers + skills de base (56 tests unitaires)
 - [x] finary_adapter.py fonctionnel (subprocess, session cookies, TOTP auto)
 - [x] Test end-to-end : "Analyse mon portfolio Finary" (live via MCP)
-- [x] Premier conseil DCA Fortuneo contextualisé
+- [x] Premier conseil DCA le courtier configuré contextualisé
 
 ### V2 — ✅ Terminée
 - [x] Yahoo Finance intégré (ETF Euronext Paris — DCAM, WPEA, CW8, EWLD)
@@ -248,12 +294,12 @@ make lint       # Ruff + mypy
 
 ### V4 — Idées
 
-#### Suivi PEA actif (prioritaire dès validation Fortuneo)
+#### Suivi PEA actif (prioritaire dès validation le courtier configuré)
 - [x] Infrastructure `user_profile.json` — champs `opening_date`, `order_history`, `five_year_deadline`, `etf_cible`
 - [x] `skills/pea_tracker.py` — countdown 5 ans, P&L, gestion historique ordres (fonctions pures)
 - [x] MCP `get_pea_status()` — statut complet PEA : countdown, performance, prochain ordre
 - [x] MCP `record_pea_order()` — persistance d'un ordre exécuté dans le profil
-- [ ] Renseigner `opening_date` dans `user_profile.json` dès validation Fortuneo
+- [ ] Renseigner `opening_date` dans `user_profile.json` dès validation le courtier configuré
 
 #### Rappels DCA automatiques
 - [x] MCP `get_dca_reminder()` — vérifie si l'ordre mensuel a été passé, retourne rappel si non
@@ -262,7 +308,7 @@ make lint       # Ruff + mypy
 
 #### Analyse avancée
 - [x] `skills/timing.py` — score timing 0-100 (percentile prix/SMA63j)
-- [x] MCP `get_dca_timing(ticker)` — recommandation contextualisée Fortuneo
+- [x] MCP `get_dca_timing(ticker)` — recommandation contextualisée le courtier configuré
 - [x] `skills/benchmark.py` — compare_returns() + calculate_dca_vs_lumpsum()
 - [x] MCP `compare_vs_benchmark(etf, benchmark, period)` — ETF vs EUNL.DE
 

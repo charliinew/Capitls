@@ -28,6 +28,18 @@ from fastmcp import FastMCP
 
 from mcp_server.tools import analysis_tool, market_tool, portfolio_tool, regulation_tool
 
+
+def _last_sync_date() -> str:
+    """Retourne la date du dernier sync Finary depuis user_profile.json."""
+    try:
+        import json
+        profile_path = Path(__file__).parent / "context" / "user_profile.json"
+        with open(profile_path, encoding="utf-8") as f:
+            profile = json.load(f)
+        return profile.get("snapshot_finary", {}).get("date", profile.get("last_updated", "inconnue"))
+    except Exception:
+        return "inconnue"
+
 mcp = FastMCP(
     name="capitls",
     instructions=(
@@ -43,21 +55,43 @@ mcp = FastMCP(
 # --- Tools : Portfolio Finary ---
 
 @mcp.tool
+def sync_profile() -> dict:
+    """Synchronise user_profile.json avec les soldes Finary en temps réel. À appeler en début de session ou quand les données semblent obsolètes."""
+    result = portfolio_tool.sync_profile()
+    if result.get("status") == "auth_error":
+        last_sync = _last_sync_date()
+        raise ValueError(
+            f"⚠️ SESSION FINARY EXPIRÉE — données périmées depuis le {last_sync}. "
+            f"Les conseils basés sur les soldes ne sont PAS fiables. "
+            f"Pour reconnecter : make finary-signin MFA=<code_2fa>"
+        )
+    return result
+
+
+@mcp.tool
 def get_portfolio() -> dict:
     """Récupère le portfolio complet depuis Finary (comptes, soldes, patrimoine total)."""
-    return portfolio_tool.get_portfolio()
+    result = portfolio_tool.get_portfolio()
+    if result.get("status") == "auth_error":
+        last_sync = _last_sync_date()
+        raise ValueError(
+            f"⚠️ SESSION FINARY EXPIRÉE — données périmées depuis le {last_sync}. "
+            f"Pour reconnecter : make finary-signin MFA=<code_2fa>"
+        )
+    return result
 
 
 @mcp.tool
 def get_accounts_summary() -> dict:
     """Résumé des comptes avec vérification des règles personnelles (liquidité, allocation crypto)."""
-    return portfolio_tool.get_accounts_summary()
-
-
-@mcp.tool
-def sync_profile() -> dict:
-    """Synchronise user_profile.json avec les soldes Finary en temps réel. À appeler en début de session ou quand les données semblent obsolètes."""
-    return portfolio_tool.sync_profile()
+    result = portfolio_tool.get_accounts_summary()
+    if result.get("status") == "auth_error":
+        last_sync = _last_sync_date()
+        raise ValueError(
+            f"⚠️ SESSION FINARY EXPIRÉE — données périmées depuis le {last_sync}. "
+            f"Pour reconnecter : make finary-signin MFA=<code_2fa>"
+        )
+    return result
 
 
 @mcp.tool
