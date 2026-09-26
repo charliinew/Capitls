@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "_note": "Données publiques de référence. Mises à jour automatiquement (fetch si > 24h) par mcp_server/tools/reference_tool.py — la dernière valeur récupérée sert de repli. Ne contient aucune donnée personnelle.",
+  "last_successful_fetch": "2026-09-26T07:20:16.700076+00:00",
+  "last_fetch_attempt": "2026-09-26T07:20:16.700076+00:00",
+  "last_fetch_errors": [],
+  "facts": {
+    "livret_a.taux": {
+      "label": "Taux Livret A",
+      "unit": "taux",
+      "value": 0.017,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2365",
+      "updated_at": "2026-08-01",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "livret_a.plafond": {
+      "label": "Plafond Livret A",
+      "unit": "euros",
+      "value": 22950.0,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2365",
+      "updated_at": "2026-09-26",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "ldds.taux": {
+      "label": "Taux LDDS",
+      "unit": "taux",
+      "value": 0.017,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2368",
+      "updated_at": "2026-08-01",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "ldds.plafond": {
+      "label": "Plafond LDDS",
+      "unit": "euros",
+      "value": 12000.0,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2368",
+      "updated_at": "2026-09-26",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "lep.taux": {
+      "label": "Taux LEP",
+      "unit": "taux",
+      "value": 0.025,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2367",
+      "updated_at": "2026-02-01",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "lep.plafond": {
+      "label": "Plafond LEP",
+      "unit": "euros",
+      "value": 10000.0,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2367",
+      "updated_at": "2026-09-26",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "lep.rfr_1_part": {
+      "label": "Plafond revenu fiscal de référence LEP (1 part, métropole)",
+      "unit": "euros",
+      "value": 23028.0,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2367",
+      "updated_at": "2026-01-01",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "livret_jeune.plafond": {
+      "label": "Plafond Livret Jeune",
+      "unit": "euros",
+      "value": 1600.0,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2904",
+      "updated_at": "2026-09-26",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "livret_jeune.age_min": {
+      "label": "Âge minimum Livret Jeune",
+      "unit": "ans",
+      "value": 12,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2904",
+      "updated_at": "2026-09-26",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "livret_jeune.age_max": {
+      "label": "Âge maximum Livret Jeune (fermeture l'année des N ans)",
+      "unit": "ans",
+      "value": 25,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2904",
+      "updated_at": "2026-09-26",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "pea.plafond": {
+      "label": "Plafond versements PEA",
+      "unit": "euros",
+      "value": 150000.0,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2385",
+      "updated_at": "2026-09-26",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "pea_pme.plafond": {
+      "label": "Plafond PEA PME-ETI (cumulé avec PEA)",
+      "unit": "euros",
+      "value": 225000.0,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2385",
+      "updated_at": "2026-09-26",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "pea_jeune.plafond": {
+      "label": "Plafond PEA jeune (majeur rattaché au foyer fiscal)",
+      "unit": "euros",
+      "value": 20000.0,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2385",
+      "updated_at": "2026-09-26",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "pea.duree_exoneration_ans": {
+      "label": "Durée de détention PEA pour exonération d'IR (depuis le 1er versement)",
+      "unit": "ans",
+      "value": 5,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2385",
+      "updated_at": "2019-05-22",
+      "verified_at": "2026-09-26",
+      "origin": "baseline"
+    },
+    "fiscalite.pfu_total": {
+      "label": "PFU (flat tax) sur plus-values mobilières / CTO / crypto",
+      "unit": "taux",
+      "value": 0.314,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F21618",
+      "updated_at": "2026-01-01",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "fiscalite.ir_forfaitaire": {
+      "label": "Part impôt sur le revenu du PFU",
+      "unit": "taux",
+      "value": 0.128,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F21618",
+      "updated_at": "2018-01-01",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "fiscalite.ps_placements": {
+      "label": "Prélèvements sociaux placements (PEA, CTO, crypto, livrets fiscalisés)",
+      "unit": "taux",
+      "value": 0.186,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F21618",
+      "updated_at": "2026-01-01",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "fiscalite.ps_assurance_vie": {
+      "label": "Prélèvements sociaux assurance-vie",
+      "unit": "taux",
+      "value": 0.172,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F22414",
+      "updated_at": "2018-01-01",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "fiscalite.ps_epargne_logement": {
+      "label": "Prélèvements sociaux PEL / CEL",
+      "unit": "taux",
+      "value": 0.172,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2329",
+      "updated_at": "2018-01-01",
+      "verified_at": "2026-09-26",
+      "origin": "baseline"
+    },
+    "assurance_vie.ir_apres_8_ans": {
+      "label": "Taux IR forfaitaire assurance-vie après 8 ans (primes ≤ 150 000 €, après abattement)",
+      "unit": "taux",
+      "value": 0.075,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F22414",
+      "updated_at": "2018-01-01",
+      "verified_at": "2026-09-26",
+      "origin": "live"
+    },
+    "assurance_vie.duree_avantage_ans": {
+      "label": "Durée de détention assurance-vie pour fiscalité réduite",
+      "unit": "ans",
+      "value": 8,
+      "source": "https://www.service-public.gouv.fr/particuliers/vosdroits/F22414",
+      "updated_at": "2018-01-01",
+      "verified_at": "2026-09-26",
+      "origin": "baseline"
+    }
+  },
+  "etfs": {
+    "DCAM": {
+      "ticker": "DCAM",
+      "isin": "FR001400U5Q4",
+      "name": "Amundi PEA Monde (MSCI World) UCITS ETF Acc",
+      "index": "MSCI World",
+      "ter": 0.002,
+      "fund_size_meur": 1516.0,
+      "pea_eligible": true,
+      "replication": "synthétique (swap)",
+      "domicile": "France",
+      "distribution": "capitalisant",
+      "launched": "2025-03",
+      "ticker_yahoo": "DCAM.PA",
+      "verified_at": "2026-09-26"
+    },
+    "WPEA": {
+      "ticker": "WPEA",
+      "isin": "IE0002XZSHO1",
+      "name": "iShares MSCI World Swap PEA UCITS ETF EUR (Acc)",
+      "index": "MSCI World",
+      "ter": 0.002,
+      "fund_size_meur": 2206.0,
+      "pea_eligible": true,
+      "replication": "synthétique (swap)",
+      "domicile": "Irlande",
+      "distribution": "capitalisant",
+      "launched": "2024-04",
+      "ticker_yahoo": "WPEA.PA",
+      "verified_at": "2026-09-26"
+    },
+    "CW8": {
+      "ticker": "CW8",
+      "isin": "LU1681043599",
+      "name": "Amundi MSCI World Swap UCITS ETF EUR Acc",
+      "index": "MSCI World",
+      "ter": 0.0038,
+      "fund_size_meur": 6673.0,
+      "pea_eligible": true,
+      "replication": "synthétique (swap)",
+      "domicile": "Luxembourg",
+      "distribution": "capitalisant",
+      "launched": null,
+      "ticker_yahoo": "CW8.PA",
+      "verified_at": "2026-09-26"
+    },
+    "EWLD": {
+      "ticker": "EWLD",
+      "isin": "FR0011869353",
+      "name": "Lyxor PEA Monde (MSCI World) UCITS ETF - Capi",
+      "index": "MSCI World",
+      "ter": 0.0045,
+      "fund_size_meur": 235.0,
+      "pea_eligible": true,
+      "replication": "synthétique (swap)",
+      "domicile": "France",
+      "distribution": null,
+      "launched": null,
+      "ticker_yahoo": "EWLD.PA",
+      "verified_at": "2026-09-26"
+    }
+  },
+  "changes": [
+    {
+      "date": "2026-01-01",
+      "key": "fiscalite.ps_placements",
+      "label": "Prélèvements sociaux placements (PEA, CTO, crypto, livrets fiscalisés)",
+      "old": 0.172,
+      "new": 0.186
+    },
+    {
+      "date": "2026-01-01",
+      "key": "fiscalite.pfu_total",
+      "label": "PFU (flat tax) sur plus-values mobilières / CTO / crypto",
+      "old": 0.3,
+      "new": 0.314
+    },
+    {
+      "date": "2026-08-01",
+      "key": "livret_a.taux",
+      "label": "Taux Livret A",
+      "old": 0.015,
+      "new": 0.017
+    },
+    {
+      "date": "2026-08-01",
+      "key": "ldds.taux",
+      "label": "Taux LDDS",
+      "old": 0.015,
+      "new": 0.017
+    }
+  ]
+}

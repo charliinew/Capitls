@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "capitls": {
+      "command": "uv",
+      "args": ["run", "--directory", "{{PROJECT_DIR}}", "python", "-m", "mcp_server.main"]
+    }
+  }
+}

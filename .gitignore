@@ -1,0 +1,44 @@
+# Credentials — NEVER commit
+.env
+.env.local
+credentials.json
+*.cookie
+finary_session*
+jwt.json
+localCookiesMozilla.txt
+
+# Données personnelles financières — NEVER commit
+mcp_server/context/user_profile.json
+mcp_server/context/*.bak
+mcp_server/context/*.tmp
+
+# Claude Code — fichiers machine-specific (générés par make setup)
+.mcp.json
+.claude/settings.json
+.claude/settings.local.json
+# Sorties de workflows (peuvent contenir des données personnelles)
+.claude/output/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+data/*.tmp
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# macOS
+.DS_Store

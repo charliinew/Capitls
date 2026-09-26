@@ -1,0 +1,44 @@
+{
+  "_note": "EXEMPLE FICTIF documentant le format. Inutile de le copier : le profil réel (user_profile.json, gitignoré) est créé par l'onboarding (review_situation / update_situation) et complété par la synchro Finary.",
+  "schema_version": 2,
+  "identity": {
+    "birth_year": 1998,
+    "situation": "salarié",
+    "tax_parts": 1,
+    "reference_tax_income": 21000,
+    "marginal_tax_rate": 0.11
+  },
+  "income": {
+    "sources": [
+      {"id": "salaire_1", "type": "salaire", "label": "Employeur", "monthly_amount": 1900, "start": "2024-09", "end": null, "regular": true},
+      {"id": "freelance_1", "type": "freelance", "label": null, "monthly_amount": null, "regular": false, "note": "missions ponctuelles"}
+    ],
+    "fixed_expenses": 1100,
+    "history": [{"month": "2026-08", "income": 1900, "source": "salaire"}]
+  },
+  "accounts": [
+    {"id": "courant", "name": "Compte courant", "category": "checking", "finary_name": "Compte Courant", "institution": "Banque A", "balance": 1500, "minimum_balance": 0, "exclude_from_liquidity": false, "role": "dépenses quotidiennes"},
+    {"id": "livret_a", "name": "Livret A", "category": "regulated_savings", "finary_name": "Livret A", "institution": "Banque A", "balance": 4000, "minimum_balance": 3000, "exclude_from_liquidity": false, "role": "épargne de précaution"},
+    {"id": "pro", "name": "Compte pro", "category": "pro_reserved", "finary_name": "Compte Pro", "institution": "Banque B", "balance": 600, "exclude_from_liquidity": true, "role": "provision cotisations sociales"},
+    {"id": "pea", "name": "PEA", "category": "pea", "finary_name": "PEA", "institution": "Courtier X", "balance": 2500}
+  ],
+  "crypto": {"total_value": 0, "positions": []},
+  "pea": {
+    "status": "open",
+    "broker": {"name": "Courtier X", "free_orders_per_month": 1, "free_order_max": 500, "fee_rate_after": 0.0035, "auto_invest": false, "notes": []},
+    "first_deposit_date": "2025-10-01",
+    "initial_deposit_target": null,
+    "monthly_target": 150,
+    "target_etf": "DCAM",
+    "referral": null,
+    "orders": [
+      {"date": "2025-10-01", "ticker": "DCAM", "amount": 150, "price": 5.1, "shares": 29.411765, "is_free": true}
+    ]
+  },
+  "rules": {"liquidity_min": 3000, "crypto_max_pct": 0.1, "max_orders_per_month": 1},
+  "goals": {"horizon": "long terme (10+ ans)", "main_goal": "indépendance financière", "risk_tolerance": "modérée"},
+  "review": {"last_review_date": "2026-09-01", "interval_days": 30, "balances_at_last_review": {}, "history": []},
+  "finary_snapshot": null,
+  "decisions": [],
+  "meta": {"created_at": "2025-09-15", "last_updated": "2026-09-01", "last_news_check": "2026-09-01"}
+}
